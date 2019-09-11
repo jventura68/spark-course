@@ -20,4 +20,4 @@ RUN chown -R $NB_UID:$NB_GID /home/$NB_USER/data && \
     chown -R $NB_UID:$NB_GID /home/$NB_USER/src  && \
 	chown -R $NB_UID:$NB_GID /home/$NB_USER/.jupyter/jupyter_notebook_config.py
 	
-USER $NB_UID
+USER $NB_USER
