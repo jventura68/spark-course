@@ -14,10 +14,8 @@ SHELL ["/bin/bash", "-c"]
 # files directory and subdirectories must be read for all users
 # if not, the chown command not run correctly
 ADD files /home/$NB_USER
-COPY jupyter_notebook_config.py /home/$NB_USER/.jupyter
 
 RUN chown -R $NB_UID:$NB_GID /home/$NB_USER/data && \
-    chown -R $NB_UID:$NB_GID /home/$NB_USER/src  && \
-	chown -R $NB_UID:$NB_GID /home/$NB_USER/.jupyter/jupyter_notebook_config.py
+    chown -R $NB_UID:$NB_GID /home/$NB_USER/src
 	
 USER $NB_USER
