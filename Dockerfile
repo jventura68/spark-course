@@ -7,6 +7,7 @@ LABEL maintainer="Jose Ventura<jose.ventura.roda@gmail.com>"
 
 USER root
 env PATH $PATH:$SPARK_HOME/bin
+env SPARK_DATA /home/$NB_USER/data
 
 SHELL ["/bin/bash", "-c"]
 
