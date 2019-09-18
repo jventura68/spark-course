@@ -9,14 +9,10 @@ USER root
 env PATH $PATH:$SPARK_HOME/bin
 env SPARK_DATA /home/$NB_USER/data
 
-SHELL ["/bin/bash", "-c"]
-
-#Copy files for course
-# files directory and subdirectories must be read for all users
-# if not, the chown command not run correctly
-ADD files /home/$NB_USER
-
-RUN chown -R $NB_UID:$NB_GID /home/$NB_USER/data && \
-    chown -R $NB_UID:$NB_GID /home/$NB_USER/src
-	
-USER $NB_USER
+USER $NB_UID
+RUN conda install --quiet --yes \
+    'kafka-python' \
+    && \
+    conda clean --all -f -y && \
+    fix-permissions $CONDA_DIR && \
+    fix-permissions /home/$NB_USER
