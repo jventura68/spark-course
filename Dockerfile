@@ -7,7 +7,13 @@ LABEL maintainer="Jose Ventura<jose.ventura.roda@gmail.com>"
 
 USER root
 env PATH $PATH:$SPARK_HOME/bin
-env SPARK_DATA /home/$NB_USER/data
+env SPARK_DATA /home/$NB_USER/work/data
+env SPARK_LOG_LEVEL ERROR
+
+#Create spark log conf file and change log level
+RUN sed 's/log4j.rootCategory=INFO/log4j.rootCategory=$SPARK_LOG_LEVEL/' \
+       $SPARK_HOME/conf/log4j.properties.template > \
+       $SPARK_HOME/conf/log4j.properties
 
 USER $NB_UID
 RUN conda install --quiet --yes \
