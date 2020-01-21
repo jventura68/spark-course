@@ -51,7 +51,7 @@ RUN sed 's/log4j.rootCategory=INFO/log4j.rootCategory=ERROR/' \
 USER $NB_UID
 
 # Install pyarrow
-RUN conda install --quiet -y 'pyarrow' 'boto3' && \
+RUN conda install --quiet -y 'pyarrow' 'boto3' 'beautifulsoup4' && \
     conda clean --all -f -y && \
     fix-permissions $CONDA_DIR && \
     fix-permissions /home/$NB_USER
