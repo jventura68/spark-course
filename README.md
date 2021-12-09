@@ -13,3 +13,7 @@ docker run --name spark -d -p 8888:8888 jventuraroda/spark-course start-notebook
 Another usefull docker start options:
 * -e JUPYTER_ENABLE_LAB=yes, enable Jupyter Labs interface
 * -e GRANT_SUDO=yes , used with --user root to enable sudo for jovyan user
+
+This docker contains kafka jar connector at spark-defaults.conf file, so this library is downloaded automatically.  
+
+`org.apache.spark:spark-sql-kafka-0-10_2.12:3.2.0`
