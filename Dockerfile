@@ -1,8 +1,7 @@
 ARG BASE_CONTAINER=jupyter/pyspark-notebook
 FROM $BASE_CONTAINER
 
-# librería para kafka
-RUN echo "spark.jars.packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.2.0" >> /usr/local/spark/conf/spark-defaults.conf
+USER root
 
 #Create spark log conf file and change log level to ERROR
 RUN sed 's/log4j.rootCategory=INFO/log4j.rootCategory=ERROR/' \
